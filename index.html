@@ -36,19 +36,14 @@
       border-bottom: 1px solid rgba(27,67,50,0.1);
     }
     .logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.4rem;
-      color: var(--vert);
-      letter-spacing: -0.5px;
       display: flex; align-items: center; gap: 10px;
+      text-decoration: none;
     }
-    .logo-icon {
-      width: 36px; height: 36px;
-      background: var(--vert);
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      color: #fff; font-size: 1rem;
-    }
+    .logo-icon img { height: 40px; width: auto; }
+    .logo-text img { height: 28px; width: auto; }
+    /* version footer blanc */
+    footer .logo-icon img { filter: brightness(0) invert(1); }
+    footer .logo-text img { filter: brightness(0) invert(1); }
     .nav-cta {
       background: var(--vert);
       color: #fff;
@@ -118,7 +113,7 @@
       color: var(--gold);
     }
     .hero-sub {
-      font-size: 1.05rem; font-weight: 300; line-height: 1.7;
+      font-size: 1.05rem; font-weight: 300; line-height: 2;
       color: #555;
       max-width: 420px;
       margin-bottom: 40px;
@@ -341,7 +336,6 @@
       display: flex; align-items: center; justify-content: space-between;
     }
     footer .logo { color: #fff; }
-    footer .logo-icon { background: var(--gold); }
     footer p { font-size: 0.78rem; color: #888; }
     footer a { color: #888; text-decoration: none; }
     footer a:hover { color: var(--menthe); }
@@ -371,10 +365,13 @@
 <!-- NAV -->
 <nav>
   <div class="logo">
-    <div class="logo-icon">🍽</div>
-    GreenToque
+    <div class="logo-icon"><img src="icon.png" alt="GreenToque icône"/></div>
+    <div class="logo-text"><img src="textlogo.png" alt="GreenToque"/></div>
   </div>
-  <a href="#waitlist" class="nav-cta">Rejoindre la liste</a>
+  <div style="display:flex; gap:12px; align-items:center;">
+    <a href="restaurateurs.html" class="nav-cta" style="background:transparent; color:var(--vert); border:1.5px solid var(--vert);">Vous êtes restaurateur ?</a>
+    <a href="https://forms.gle/5whzXFcTwCTvBPUPA" target="_blank" class="nav-cta">Rejoindre la communauté</a>
+  </div>
 </nav>
 
 <!-- HERO -->
@@ -382,22 +379,18 @@
   <div class="hero-left">
     <div class="badge">
       <span class="badge-dot"></span>
-      Bientôt disponible à Paris
+      Coming soon
     </div>
-    <h1>Des restaurants d'exception,<br/><em>à prix malins.</em></h1>
+    <h1>Un bon plat au restaurant,<br/><em>à prix malin.</em></h1>
     <p class="hero-sub">
-      GreenToque connecte les foodies aux meilleurs restaurants pendant leurs heures creuses. 
-      30 à 50 % de réduction, zéro gaspillage, 100 % de plaisir.
+      GreenToque connecte les gourmets aux restaurants.<br/><br/>
+      🍽 De 30 à 50% de réduction<br/>
+      🌱 0 gaspillage alimentaire<br/>
+      ✨ 100% plaisir gourmand
     </p>
     <div class="form-block" id="waitlist">
-      <div class="form-row">
-        <input type="email" id="email-input" placeholder="ton@email.com" required />
-        <button class="form-submit" onclick="handleSubmit()">Je veux tester →</button>
-      </div>
-      <p class="form-note">Accès en avant-première · Sans engagement · <a href="#">Politique de confidentialité</a></p>
-      <div class="success-msg" id="success">
-        🎉 Tu es sur la liste ! On te contacte dès l'ouverture de la beta.
-      </div>
+      <a href="https://forms.gle/5whzXFcTwCTvBPUPA" target="_blank" class="form-submit" style="display:inline-block; font-size:1rem; padding:16px 36px; text-decoration:none; background:var(--gold); border-radius:100px;">Rejoindre la communauté →</a>
+      <p class="form-note">Accès en avant-première · Sans engagement · <a href="https://greentoqueconfidentialite.carrd.co/" target="_blank">Politique de confidentialité</a></p>
     </div>
   </div>
 
@@ -436,24 +429,24 @@
 <!-- HOW IT WORKS -->
 <section class="section">
   <div class="section-label">Comment ça marche</div>
-  <div class="section-title">Simple comme un bon repas.</div>
+  <div class="section-title">Je réserve en 3 étapes et je n'ai plus qu'à déguster sur place !</div>
   <div class="steps">
     <div class="step">
       <div class="step-num">01</div>
       <div class="step-icon">🔍</div>
-      <div class="step-title">Tu parcours les offres du moment</div>
-      <div class="step-desc">Les restaurants publient leurs créneaux disponibles en temps réel, avec leurs réductions. Tu filtres par quartier, cuisine, budget.</div>
+      <div class="step-title">Je cherche</div>
+      <div class="step-desc">J'ouvre l'appli, je me géolocalise et je visualise les offres disponibles.</div>
     </div>
     <div class="step">
       <div class="step-num">02</div>
       <div class="step-icon">🎯</div>
-      <div class="step-title">Tu réserves en 3 clics</div>
-      <div class="step-desc">Prépaiement sécurisé via Stripe. Confirmation immédiate. Le restaurant t'attend — sans mauvaise surprise, sans no-show.</div>
+      <div class="step-title">Je choisis</div>
+      <div class="step-desc">Je sélectionne le plat, le restaurant et le créneau qui me convient.</div>
     </div>
     <div class="step">
       <div class="step-num">03</div>
       <div class="step-icon">🍽</div>
-      <div class="step-title">Tu profites et tu contribues</div>
+      <div class="step-title">Je profite et je contribue</div>
       <div class="step-desc">Tu dégustes un excellent repas à prix réduit. Le restaurant remplit ses heures creuses. Le gaspillage diminue. Tout le monde gagne.</div>
     </div>
   </div>
@@ -466,36 +459,34 @@
     <div class="proof-label">du CA perdu par les restaurants en heures creuses</div>
   </div>
   <div class="proof-item">
-    <div class="proof-num">-50%</div>
+    <div class="proof-num">-30 à -50%</div>
     <div class="proof-label">de réduction sur les meilleurs restaurants parisiens</div>
   </div>
   <div class="proof-item">
     <div class="proof-num">0€</div>
-    <div class="proof-label">d'engagement pour rejoindre la beta</div>
+    <div class="proof-label">d'engagement pour rejoindre la phase de lancement</div>
   </div>
 </div>
 
 <!-- FOOTER CTA -->
 <section class="footer-cta">
-  <h2>Tu es foodie et malin·ne ?<br/>Tu es à la bonne place.</h2>
-  <p>Rejoins les premiers inscrits et accède à la beta en avant-première à Paris dès le lancement.</p>
-  <div class="form-row">
-    <input type="email" id="email-input-2" placeholder="ton@email.com" required />
-    <button class="form-submit" onclick="handleSubmit2()">Rejoindre →</button>
-  </div>
+  <h2>Et si votre prochain repas était aussi savoureux qu'avantageux…&nbsp; et responsable ?</h2>
+  <p>Rejoins la communauté GreenToque en avant-première et fais partie des premiers gourmands à prendre part à l'aventure.</p>
+  <a href="https://forms.gle/5whzXFcTwCTvBPUPA" target="_blank" class="form-submit" style="display:inline-block; font-size:1rem; padding:16px 36px; text-decoration:none; background:var(--vert); border-radius:100px; position:relative; z-index:1;">Rejoindre la communauté →</a>
 </section>
 
 <!-- FOOTER -->
 <footer>
   <div class="logo">
-    <div class="logo-icon">🍽</div>
+    <div class="logo-icon"><img src="icon.png" alt="GreenToque icône"/></div>
+    <div class="logo-text"><img src="textlogo.png" alt="GreenToque"/></div>
     GreenToque
   </div>
-  <p>© 2026 GreenToque · <a href="#">Mentions légales</a> · <a href="#">CGU</a> · <a href="#">Politique de confidentialité</a></p>
-  <p><a href="mailto:contact@greentoque.fr">contact@greentoque.fr</a></p>
+  <p>© 2026 GreenToque · <a href="#">Mentions légales</a> · <a href="#">CGU</a> · <a href="https://greentoqueconfidentialite.carrd.co/" target="_blank">Politique de confidentialité</a></p>
+  <p><a href="/cdn-cgi/l/email-protection#84e7ebeaf0e5e7f0e3f6e1e1eaf0ebf5f1e1c4e3e9e5ede8aae7ebe9"><span class="__cf_email__" data-cfemail="55363a3b21343621322730303b213a242030153238343c397b363a38">[email&#160;protected]</span></a></p>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   // Animated counter
   function animateCounter(target, duration) {
     const el = document.getElementById('counter');
@@ -535,21 +526,4 @@
   }
 
   // Intersection observer for scroll animations
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.style.opacity = '1';
-        e.target.style.transform = 'translateY(0)';
-      }
-    });
-  }, { threshold: 0.1 });
-
-  document.querySelectorAll('.step, .proof-item').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(30px)';
-    el.style.transition = 'opacity .6s ease, transform .6s ease';
-    observer.observe(el);
-  });
-</script>
-</body>
-</html>
+  cons
