@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GreenToque — Nous contacter</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --vert:    #1B4332;
+      --vert-fonce: #122e23;
+      --menthe:  #B0C6B7;
+      --gold:    #D4A017;
+      --corail:  #FFB09D;
+      --creme:   #F7F3ED;
+      --noir:    #2C2C2C;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--creme);
+      color: var(--noir);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── NAV ── */
+    nav {
+      background: var(--vert);
+      padding: 18px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    nav a.logo img {
+      height: 44px; width: auto;
+      filter: brightness(0) invert(1);
+    }
+    nav a.back {
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--menthe);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s;
+    }
+    nav a.back:hover { color: #fff; }
+
+    /* ── MAIN ── */
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 24px;
+    }
+
+    .contact-card {
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 4px 32px rgba(27,67,50,0.08);
+      width: 100%;
+      max-width: 580px;
+      overflow: hidden;
+    }
+
+    .contact-card-header {
+      background: var(--vert);
+      padding: 36px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+    .contact-card-header::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 200px; height: 200px;
+      background: radial-gradient(circle, rgba(212,160,23,0.2) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .contact-card-header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.7rem;
+      color: #fff;
+      margin-bottom: 8px;
+      position: relative; z-index: 1;
+    }
+    .contact-card-header p {
+      font-size: 0.88rem;
+      color: var(--menthe);
+      font-weight: 300;
+      position: relative; z-index: 1;
+    }
+
+    .contact-card-body {
+      padding: 36px 40px;
+    }
+
+    .field {
+      margin-bottom: 20px;
+    }
+    .field label {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--vert);
+      margin-bottom: 7px;
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
+    }
+    .field input,
+    .field select,
+    .field textarea {
+      width: 100%;
+      padding: 13px 16px;
+      border: 1.5px solid rgba(27,67,50,0.15);
+      border-radius: 10px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.92rem;
+      color: var(--noir);
+      background: var(--creme);
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      resize: none;
+    }
+    .field input::placeholder,
+    .field textarea::placeholder { color: #bbb; font-weight: 300; }
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
+      border-color: var(--vert);
+      box-shadow: 0 0 0 3px rgba(27,67,50,0.08);
+      background: #fff;
+    }
+
+    .field-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .btn-primary {
+      width: 100%;
+      padding: 15px;
+      background: var(--vert);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      margin-top: 8px;
+    }
+    .btn-primary:hover {
+      background: var(--vert-fonce);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(27,67,50,0.2);
+    }
+
+    /* ── SUCCESS ── */
+    .success-panel {
+      display: none;
+      text-align: center;
+      padding: 48px 40px;
+      animation: fadeIn 0.4s ease;
+    }
+    .success-panel.active { display: block; }
+    .success-icon {
+      width: 68px; height: 68px;
+      background: linear-gradient(135deg, var(--vert), #2d6a4f);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.8rem;
+      margin: 0 auto 20px;
+      box-shadow: 0 8px 24px rgba(27,67,50,0.2);
+    }
+    .success-panel h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      color: var(--vert);
+      margin-bottom: 10px;
+    }
+    .success-panel p {
+      font-size: 0.88rem;
+      color: #777;
+      line-height: 1.6;
+      max-width: 320px;
+      margin: 0 auto 28px;
+    }
+    .btn-retour {
+      display: inline-block;
+      padding: 12px 28px;
+      border: 1.5px solid var(--vert);
+      color: var(--vert);
+      border-radius: 10px;
+      font-size: 0.88rem;
+      font-weight: 500;
+      cursor: pointer;
+      background: transparent;
+      font-family: 'DM Sans', sans-serif;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+    }
+    .btn-retour:hover { background: var(--vert); color: #fff; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--noir);
+      padding: 20px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    footer img { filter: brightness(0) invert(1); height: 36px; }
+    footer p { font-size: 0.76rem; color: #888; }
+    footer a { color: #888; text-decoration: none; }
+    footer a:hover { color: var(--menthe); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      nav { padding: 16px 20px; }
+      .contact-card-header { padding: 28px 24px; }
+      .contact-card-body { padding: 28px 24px; }
+      .field-row { grid-template-columns: 1fr; gap: 0; }
+      footer { flex-direction: column; gap: 10px; text-align: center; padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="auth-restaurateur.html" class="logo">
+      <img src="logo_combined.png" alt="GreenToque"/>
+    </a>
+    <a href="auth-restaurateur.html" class="back">← Retour</a>
+  </nav>
+
+  <main>
+    <div class="contact-card">
+
+      <!-- HEADER -->
+      <div class="contact-card-header">
+        <h1>Nous contacter</h1>
+        <p>Une question ? Notre équipe vous répond sous 24h.</p>
+      </div>
+
+      <!-- FORMULAIRE -->
+      <div class="contact-card-body" id="contact-form">
+
+        <div class="field-row">
+          <div class="field">
+            <label>Prénom *</label>
+            <input type="text" id="c-prenom" placeholder="Marie"/>
+          </div>
+          <div class="field">
+            <label>Nom *</label>
+            <input type="text" id="c-nom" placeholder="Dupont"/>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Email *</label>
+          <input type="email" id="c-email" placeholder="contact@monrestaurant.fr"/>
+        </div>
+
+        <div class="field">
+          <label>Vous êtes *</label>
+          <select id="c-profil">
+            <option value="" disabled selected>Sélectionnez votre profil</option>
+            <option value="restaurateur">Restaurateur indépendant</option>
+            <option value="client">Client GreenToque</option>
+            <option value="partenaire">Partenaire / Investisseur</option>
+            <option value="presse">Presse / Média</option>
+            <option value="autre">Autre</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label>Sujet *</label>
+          <input type="text" id="c-sujet" placeholder="Ex : Question sur l'offre de lancement"/>
+        </div>
+
+        <div class="field">
+          <label>Message *</label>
+          <textarea id="c-message" rows="5" placeholder="Décrivez votre demande…"></textarea>
+        </div>
+
+        <div id="error-contact" style="display:none; background:rgba(255,176,157,0.2); border:1px solid var(--corail); border-radius:8px; padding:10px 14px; font-size:0.82rem; color:#c0392b; margin-bottom:16px;">
+          Veuillez remplir tous les champs obligatoires.
+        </div>
+
+        <button class="btn-primary" onclick="handleContact()">Envoyer mon message →</button>
+
+      </div>
+
+      <!-- SUCCESS -->
+      <div class="success-panel" id="success-contact">
+        <div class="success-icon">✓</div>
+        <h2>Message envoyé !</h2>
+        <p>Merci pour votre message. Notre équipe vous répondra dans les meilleurs délais.</p>
+        <a href="auth-restaurateur.html" class="btn-retour">← Retour à l'espace restaurateur</a>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    <img src="logo_combined.png" alt="GreenToque"/>
+    <p>© 2026 GreenToque · <a href="mentions-legales.html">Mentions légales</a> · <a href="confidentialite.html">Politique de confidentialité</a></p>
+  </footer>
+
+  <script>
+    function handleContact() {
+      const prenom  = document.getElementById('c-prenom').value.trim();
+      const nom     = document.getElementById('c-nom').value.trim();
+      const email   = document.getElementById('c-email').value.trim();
+      const profil  = document.getElementById('c-profil').value;
+      const sujet   = document.getElementById('c-sujet').value.trim();
+      const message = document.getElementById('c-message').value.trim();
+      const errEl   = document.getElementById('error-contact');
+
+      if (!prenom || !nom || !email || !profil || !sujet || !message) {
+        errEl.style.display = 'block';
+        return;
+      }
+
+      errEl.style.display = 'none';
+      const btn = document.querySelector('.btn-primary');
+      btn.textContent = 'Envoi en cours…';
+      btn.disabled = true;
+
+      // Simulation — à brancher sur un service email (ex: Resend, Formspree)
+      setTimeout(() => {
+        document.getElementById('contact-form').style.display = 'none';
+        document.getElementById('success-contact').classList.add('active');
+      }, 1200);
+    }
+  </script>
+
+</body>
+</html>
